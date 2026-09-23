@@ -1,0 +1,131 @@
+<style>
+  .tabbar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .tab-btn2 {
+    font-size: 13px;
+    padding: 9px 6px;
+    border-radius: var(--radius);
+    border: 0.5px solid var(--border-strong);
+    background: transparent;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    width: 100%;
+  }
+  /* tablet: masih 5 kolom tapi font & padding sedikit lebih kecil */
+  @media (max-width: 560px) {
+    .tabbar { grid-template-columns: repeat(3, 1fr); }
+    .tab-btn2 { font-size: 11.5px; padding: 8px 4px; }
+    .tab-btn2[data-tab="thumb"], .tab-btn2[data-tab="web"] { grid-column: span 1; }
+  }
+  /* hp kecil banget: 2 kolom biar teks ga kepotong */
+  @media (max-width: 380px) {
+    .tabbar { grid-template-columns: repeat(2, 1fr); }
+    .tab-btn2 { font-size: 11px; }
+  }
+</style>
+<div style="max-width:680px">
+  <div class="tabbar" id="tabs">
+    <button class="tab-btn2" data-tab="all" style="border-color:var(--border-accent);background:var(--bg-accent);color:var(--text-accent);font-weight:500">All</button>
+    <button class="tab-btn2" data-tab="design">Graphic design</button>
+    <button class="tab-btn2" data-tab="thumb">Thumbnail design</button>
+    <button class="tab-btn2" data-tab="video">Video editing</button>
+    <button class="tab-btn2" data-tab="web">Web dev</button>
+  </div>
+  <div style="font-size:11px;color:var(--text-muted);margin:-12px 0 16px">resize window buat liat responsivenya (5 kolom → 3 → 2)</div>
+
+  <div id="panel-all">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+      <div style="background:var(--surface-1);border:0.5px solid var(--border);border-radius:12px;padding:12px">
+        <div style="height:70px;background:var(--bg-accent);border-radius:8px;margin-bottom:8px;display:flex;align-items:center;justify-content:center"><i class="ti ti-flower" style="font-size:22px;color:var(--text-accent)"></i></div>
+        <div style="font-size:14px;font-weight:500">23bouquet poster</div>
+        <div style="font-size:12px;color:var(--text-secondary)">Graphic design</div>
+      </div>
+      <div style="background:var(--surface-1);border:0.5px solid var(--border);border-radius:12px;padding:12px">
+        <div style="height:70px;background:var(--bg-accent);border-radius:8px;margin-bottom:8px;display:flex;align-items:center;justify-content:center"><i class="ti ti-code" style="font-size:22px;color:var(--text-accent)"></i></div>
+        <div style="font-size:14px;font-weight:500">Kasir offline POS</div>
+        <div style="font-size:12px;color:var(--text-secondary)">Web dev</div>
+      </div>
+    </div>
+    <div style="text-align:center;border:0.5px solid var(--border-strong);border-radius:8px;padding:10px;font-size:13px;color:var(--text-accent)">Lihat semua proyek <i class="ti ti-chevron-down" style="font-size:14px"></i></div>
+  </div>
+
+  <div id="panel-design" style="display:none">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+      <div style="background:var(--surface-1);border:0.5px solid var(--border);border-radius:12px;padding:12px">
+        <div style="height:70px;background:var(--bg-accent);border-radius:8px;margin-bottom:8px;display:flex;align-items:center;justify-content:center"><i class="ti ti-flower" style="font-size:22px;color:var(--text-accent)"></i></div>
+        <div style="font-size:14px;font-weight:500">23bouquet poster</div>
+        <div style="font-size:12px;color:var(--text-secondary)">Promo visual set</div>
+      </div>
+      <div style="background:var(--surface-1);border:0.5px solid var(--border);border-radius:12px;padding:12px">
+        <div style="height:70px;background:var(--bg-accent);border-radius:8px;margin-bottom:8px;display:flex;align-items:center;justify-content:center"><i class="ti ti-book" style="font-size:22px;color:var(--text-accent)"></i></div>
+        <div style="font-size:14px;font-weight:500">College brand kit</div>
+        <div style="font-size:12px;color:var(--text-secondary)">Social content strategy</div>
+      </div>
+    </div>
+    <div style="text-align:center;border:0.5px solid var(--border-strong);border-radius:8px;padding:10px;font-size:13px;color:var(--text-accent)">Lihat semua proyek <i class="ti ti-chevron-down" style="font-size:14px"></i></div>
+  </div>
+
+  <div id="panel-thumb" style="display:none">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px">
+      <div style="background:var(--surface-1);border:0.5px solid var(--border);border-radius:10px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center"><i class="ti ti-photo" style="font-size:20px;color:var(--text-secondary)"></i></div>
+      <div style="background:var(--surface-1);border:0.5px solid var(--border);border-radius:10px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center"><i class="ti ti-photo" style="font-size:20px;color:var(--text-secondary)"></i></div>
+      <div style="background:var(--surface-1);border:0.5px solid var(--border);border-radius:10px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center"><i class="ti ti-photo" style="font-size:20px;color:var(--text-secondary)"></i></div>
+    </div>
+    <div style="text-align:center;border:0.5px solid var(--border-strong);border-radius:8px;padding:10px;font-size:13px;color:var(--text-accent)">Lihat semua thumbnail <i class="ti ti-chevron-down" style="font-size:14px"></i></div>
+  </div>
+
+  <div id="panel-video" style="display:none">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px">
+      <div style="background:var(--surface-1);border:0.5px solid var(--border);border-radius:10px;aspect-ratio:9/16;display:flex;align-items:center;justify-content:center"><i class="ti ti-player-play" style="font-size:20px;color:var(--text-secondary)"></i></div>
+      <div style="background:var(--surface-1);border:0.5px solid var(--border);border-radius:10px;aspect-ratio:9/16;display:flex;align-items:center;justify-content:center"><i class="ti ti-player-play" style="font-size:20px;color:var(--text-secondary)"></i></div>
+      <div style="background:var(--surface-1);border:0.5px solid var(--border);border-radius:10px;aspect-ratio:9/16;display:flex;align-items:center;justify-content:center"><i class="ti ti-player-play" style="font-size:20px;color:var(--text-secondary)"></i></div>
+    </div>
+    <div style="text-align:center;border:0.5px solid var(--border-strong);border-radius:8px;padding:10px;font-size:13px;color:var(--text-accent)">Lihat semua video <i class="ti ti-chevron-down" style="font-size:14px"></i></div>
+  </div>
+
+  <div id="panel-web" style="display:none">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+      <div style="background:var(--surface-1);border:0.5px solid var(--border);border-radius:12px;padding:12px">
+        <div style="height:70px;background:var(--bg-accent);border-radius:8px;margin-bottom:8px;display:flex;align-items:center;justify-content:center"><i class="ti ti-code" style="font-size:22px;color:var(--text-accent)"></i></div>
+        <div style="font-size:14px;font-weight:500">Kasir offline POS</div>
+        <div style="font-size:12px;color:var(--text-secondary)">React + IndexedDB</div>
+        <div style="display:flex;gap:6px;margin-top:8px">
+          <span style="font-size:11px;border:0.5px solid var(--border-strong);border-radius:6px;padding:4px 8px;color:var(--text-secondary)"><i class="ti ti-brand-github" style="font-size:12px"></i></span>
+          <span style="font-size:11px;background:var(--bg-accent);color:var(--text-accent);border-radius:6px;padding:4px 8px"><i class="ti ti-external-link" style="font-size:12px"></i> Demo</span>
+        </div>
+      </div>
+      <div style="background:var(--surface-1);border:0.5px solid var(--border);border-radius:12px;padding:12px">
+        <div style="height:70px;background:var(--bg-accent);border-radius:8px;margin-bottom:8px;display:flex;align-items:center;justify-content:center"><i class="ti ti-map" style="font-size:22px;color:var(--text-accent)"></i></div>
+        <div style="font-size:14px;font-weight:500">SIG Spasial Gorontalo</div>
+        <div style="font-size:12px;color:var(--text-secondary)">Leaflet + GeoJSON</div>
+      </div>
+    </div>
+    <div style="text-align:center;border:0.5px solid var(--border-strong);border-radius:8px;padding:10px;font-size:13px;color:var(--text-accent)">Lihat semua proyek <i class="ti ti-chevron-down" style="font-size:14px"></i></div>
+  </div>
+</div>
+<script>
+document.querySelectorAll('.tab-btn2').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn2').forEach(b => {
+      b.style.background = 'transparent';
+      b.style.color = 'var(--text-secondary)';
+      b.style.borderColor = 'var(--border-strong)';
+      b.style.fontWeight = '400';
+    });
+    btn.style.background = 'var(--bg-accent)';
+    btn.style.color = 'var(--text-accent)';
+    btn.style.borderColor = 'var(--border-accent)';
+    btn.style.fontWeight = '500';
+    ['all','design','thumb','video','web'].forEach(k => {
+      document.getElementById('panel-'+k).style.display = (k === btn.dataset.tab) ? 'block' : 'none';
+    });
+  });
+});
+</script>

@@ -1,0 +1,75 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@900,800,700,500,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #000000;
+  --accent: #0066FF;
+  --frame: #FFEE00;
+  --border-subtle: #E8E8E8;
+  --text-secondary: #A8A8A8;
+}
+
+html {
+  /* Scroll anchoring is switched off page-wide: it is what used to keep the viewport
+     glued to the "View all projects" button while the gallery grid above it grew. */
+  overflow-anchor: none;
+  scroll-behavior: smooth;
+  font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-anchor: none;
+  overflow-x: hidden;
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+::selection {
+  background-color: #0066FF;
+  color: #FFFFFF;
+}
+
+/* Hero headline photos.
+   Sizes are expressed in `em` so each photo stays in proportion with the headline text
+   as its font-size steps down the breakpoints (28px → 34px → 42px → 46px). The numbers
+   match the original pixel design at the 46px desktop size (69.56px / 90px / 76.94px). */
+.hero-photo-muka-asli {
+  width: 1.5122em;
+  height: 1.9565em;
+  object-fit: cover;
+  display: inline-block;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.hero-photo-surabaya {
+  height: 1.6726em;
+  width: auto;
+  object-fit: contain;
+  display: inline-block;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+/* Education-card avatar — measured in `rem` so it keeps its exact 84.91 × 97 size at the
+   default 16px root font-size while still scaling with the visitor's browser setting. */
+.hero-photo-muka-animasi {
+  width: 5.3069rem;
+  height: 6.0625rem;
+  object-fit: cover;
+  display: inline-block;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
