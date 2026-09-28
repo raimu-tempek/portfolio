@@ -30,6 +30,10 @@ interface ProjectAction {
   label: string;
   href: string;
   variant: "outline" | "accent";
+  /** Optional link behaviour, e.g. "_blank" for a live site. */
+  target?: string;
+  /** Only meaningful together with `target`; `noopener noreferrer` for a new tab. */
+  rel?: string;
 }
 
 /**
@@ -110,29 +114,66 @@ const videoEditingProjects: VideoItem[] = [
   { id: "017rzOzDz6Q", title: "Video 15" },
 ];
 
-// Website — placeholder covers, placeholder tech-stack pills, and pill-shaped
-// GitHub + Live demo buttons.
+// Website — real projects: covers are served from /public/assets/website-portofolio,
+// the pills list the actual stack, and the pill-shaped GitHub + Live demo buttons open
+// their link in a new tab.
 const websiteProjects: ProjectCard[] = [
   {
-    title: "Company profile website",
+    title: "23Bouquet",
     description:
-      "Placeholder — a responsive company profile site with clean layouts and accessible navigation.",
+      "A custom bouquet e-commerce site where customers pick their own flowers, colors, and wrapping. Designed and built end to end, from UX design to a live storefront.",
     aspect: "aspect-[16/10]",
-    techStack: ["Tech A", "Tech B", "Tech C", "Tech D"],
+    image: {
+      src: "/assets/website-portofolio/23bouquet-thumbnail.webp",
+      alt: "23Bouquet — cover",
+    },
+    techStack: ["Vite", "TypeScript"],
     actions: [
-      { icon: Github, label: "GitHub", href: "#", variant: "outline" },
-      { icon: ExternalLink, label: "Live demo", href: "#", variant: "accent" },
+      {
+        icon: Github,
+        label: "GitHub",
+        href: "https://github.com/raimu-tempek/23bouquet",
+        variant: "outline",
+        target: "_blank",
+        rel: "noopener noreferrer",
+      },
+      {
+        icon: ExternalLink,
+        label: "Live demo",
+        href: "https://23bouquet.vercel.app/",
+        variant: "accent",
+        target: "_blank",
+        rel: "noopener noreferrer",
+      },
     ],
   },
   {
-    title: "Offline-first POS web app",
+    title: "Aesthetic Quiz",
     description:
-      "Placeholder — a cashier app that keeps working without internet and stores data locally.",
+      "A 7-question quiz that figures out which aesthetic you are, from clean girl to modern wastra. Built as a side project to explore interactive UI and playful copywriting.",
     aspect: "aspect-[16/10]",
-    techStack: ["Tech A", "Tech B", "Tech C"],
+    image: {
+      src: "/assets/website-portofolio/aesthetic-quiz-thumbnail.webp",
+      alt: "Aesthetic Quiz — cover",
+    },
+    techStack: ["Next.js", "TypeScript"],
     actions: [
-      { icon: Github, label: "GitHub", href: "#", variant: "outline" },
-      { icon: ExternalLink, label: "Live demo", href: "#", variant: "accent" },
+      {
+        icon: Github,
+        label: "GitHub",
+        href: "https://github.com/raimu-tempek/aesthetic-quiz",
+        variant: "outline",
+        target: "_blank",
+        rel: "noopener noreferrer",
+      },
+      {
+        icon: ExternalLink,
+        label: "Live demo",
+        href: "https://aesthetic-quiz.vercel.app/",
+        variant: "accent",
+        target: "_blank",
+        rel: "noopener noreferrer",
+      },
     ],
   },
 ];
@@ -410,6 +451,8 @@ function ProjectCardItem({ item }: { item: ProjectCard }) {
                   <a
                     key={`${item.title}-action-${index}`}
                     href={action.href}
+                    target={action.target}
+                    rel={action.rel}
                     className={`flex !w-full min-w-0 items-center justify-center gap-1.5 rounded-full px-3 py-2 font-satoshi text-[12px] transition-colors ${
                       action.variant === "accent"
                         ? "bg-accent text-white hover:bg-blue-600"
